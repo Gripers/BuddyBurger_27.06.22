@@ -1,0 +1,107 @@
+.cats-container {
+  h2 {
+    font-family: "Proxima-Nova Semibold";
+    font-size: 28px;
+  }
+}
+.burgers-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  .burger-card {
+    background: white;
+    border-radius: 12px;
+    .burger-card-header {
+      display: flex;
+      width: 100%;
+      height: 220px;
+      padding: 5vh;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    .burger-card-body {
+      padding: 2vh;
+      h4 {
+        font-family: "Proxima-Nova Semibold";
+        font-size: 20px;
+        min-height: 48px;
+      }
+      .burger-card-body-foot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        span {
+          font-size: 17px;
+        }
+        button {
+          width: 50%;
+          border: none;
+          border-radius: 8px;
+          background: rgba(81, 38, 125, 0.08);
+          color: #51267d;
+          font-family: "Proxima-Nova Semibold";
+          padding: 1vh;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+@media all and (min-width: 1280px) {
+  .cats-container {
+    max-width: 1146px;
+    margin: 0 auto;
+    h2 {
+      max-width: 1146px;
+      margin: 0 auto;
+    }
+  }
+  .burgers-container {
+    max-width: 1146px;
+    margin: 0 auto;
+  }
+}
+@media all and (max-width: 1280px) {
+  .cats-container {
+    max-width: 95%;
+    margin: 0 auto;
+    h2 {
+      max-width: 95%;
+      margin: 0 auto;
+    }
+  }
+  .burgers-container {
+    max-width: 95%;
+    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media all and (max-width: 800px) {
+  .burgers-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .burger-card-header {
+    height: 190px !important;
+  }
+}
+@media all and (max-width: 550px) {
+  .burger-card-header {
+    height: 145px !important;
+  }
+  .burger-card-body-foot {
+    span {
+      display: none !important;
+    }
+    button {
+      min-width: 100% !important;
+    }
+  }
+}
+@media all and (max-width: 350px) {
+  .burgers-container {
+    grid-template-columns: 1fr;
+  }
+}

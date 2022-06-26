@@ -1,13 +1,34 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: "Proxima-Nova Regular";
+  src: url(fonts/proxima_nova/ProximaNova-Regular.db098dc77c7aafe660e58e9eb280be48.ttf);
+}
+@font-face {
+  font-family: "Proxima-Nova Semibold";
+  src: url(fonts/proxima_nova/ProximaNova-Semibold.dfa26f09d155df035c988cf5583a2f6e.ttf);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Proxima-Nova Regular";
+}
+
+body {
+  overflow-x: hidden !important;
+}
+
+.btn {
+  box-shadow: none !important;
+}
+
+.slick-prev::before {
+  content: "" !important;
+}
+.slick-next::before {
+  content: "" !important;
+}
+
+.flag-dropdown {
+  display: none !important;
 }

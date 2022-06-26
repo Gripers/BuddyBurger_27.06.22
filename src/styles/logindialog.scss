@@ -1,0 +1,59 @@
+.login-dialog-glav {
+  .MuiPaper-root {
+    border-radius: 12px;
+    width: 422px;
+    height: auto;
+    padding: 1vh;
+    .login-dialog {
+      .login-dialog-header {
+        display: flex;
+        justify-content: end;
+        svg {
+          cursor: pointer;
+        }
+      }
+      .login-dialog-body {
+        text-align: center;
+        h3 {
+          font-family: "Proxima-Nova Semibold";
+          font-size: 24px;
+        }
+        span {
+          font-size: 16px;
+        }
+        .login-dialog-body-forms {
+          display: grid;
+          row-gap: 20px;
+          width: 90%;
+          margin: 0 auto;
+          input {
+            min-width: 100%;
+            padding: 3vh;
+            border: none;
+            border-radius: 8px;
+            background: #f7f7f7;
+          }
+          button {
+            min-width: 100%;
+            border: none;
+            border-radius: 8px;
+            padding: 1.5vh;
+            background: #51267d;
+            color: white;
+            font-family: "Proxima-Nova Semibold";
+            letter-spacing: 0.5px;
+          }
+        }
+      }
+      .login-dialog-footer {
+        text-align: center;
+        font-size: 16px;
+        p {
+          span {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
