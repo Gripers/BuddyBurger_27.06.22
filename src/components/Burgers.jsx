@@ -4,6 +4,7 @@ import "../styles/burgers.scss";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { ApiFuncsContext } from "../anyFunc/apiFuncs";
+import "./script";
 
 const Burgers = () => {
   const { categories } = React.useContext(ApiFuncsContext);
@@ -13,43 +14,54 @@ const Burgers = () => {
     <div className="mt-5">
       {categories.map((cat) => {
         return (
-          <div key={cat.id} className="cats-container my-5" id={cat.name_ru}>
-            <h2>{cat.name_ru}</h2>
-            <div className="burgers-container mt-4">
-              {cat.burgers.map((burger) => {
-                return (
-                  <div
-                    key={burger.id}
-                    className="burger-card"
-                    style={{ boxShadow: "0 4px 30px rgb(0 0 0 / 7%)" }}
-                  >
-                    <div className="burger-card-header">
-                      <LazyLoadImage src={burger.image} alt="" effect="blur" />
-                    </div>
-                    <div className="burger-card-body">
-                      <h4>{burger.name_ru}</h4>
-                      <div className="burger-card-body-foot">
-                        {burger.price ? (
-                          <span>{burger.price} UZS</span>
-                        ) : (
-                          <span>null</span>
-                        )}
-                        {getItem(burger.id) ? (
-                          <button onClick={() => removeItem(burger.id)}>
-                            Отменить
-                          </button>
-                        ) : (
-                          <button onClick={() => addItem(burger)}>
-                            Выбрать
-                          </button>
-                        )}
+          <section key={cat.id} id={cat.name_ru}>
+            <div className="cats-container my-5">
+              <h2>{cat.name_ru}</h2>
+              <div className="burgers-container mt-4">
+                {cat.burgers.map((burger) => {
+                  return (
+                    <div
+                      key={burger.id}
+                      className="burger-card"
+                      style={{ boxShadow: "0 4px 30px rgb(0 0 0 / 7%)" }}
+                    >
+                      <div className="burger-card-header">
+                        <LazyLoadImage
+                          src={burger.image}
+                          alt=""
+                          effect="blur"
+                        />
+                      </div>
+                      <div className="burger-card-body">
+                        <h4>{burger.name_ru}</h4>
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur, adipisicing
+                          elit. Dolores, cupiditate aspernatur temporibus quidem
+                          ea ducimus.
+                        </p>
+                        <div className="burger-card-body-foot">
+                          {burger.price ? (
+                            <span>{burger.price} UZS</span>
+                          ) : (
+                            <span>null</span>
+                          )}
+                          {getItem(burger.id) ? (
+                            <button onClick={() => removeItem(burger.id)}>
+                              Отменить
+                            </button>
+                          ) : (
+                            <button onClick={() => addItem(burger)}>
+                              Выбрать
+                            </button>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          </section>
         );
       })}
     </div>

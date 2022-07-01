@@ -3,15 +3,68 @@ import { useTranslation } from "react-i18next";
 import { useCart } from "react-use-cart";
 import empty_cart_pic from "../img/empty_cart.png";
 import "../styles/cart.scss";
+import axios from "axios";
+import { DopFuncsContext } from "../anyFunc/dopFuncs";
 
 const Cart = () => {
-  const { isEmpty, items, updateItemQuantity, removeItem } = useCart();
+  const { isEmpty, items, updateItemQuantity, removeItem, emptyCart } =
+    useCart();
   const { t } = useTranslation();
+  const { handleLoginOpen } = React.useContext(DopFuncsContext);
   let total = 0;
+
+  const toGroup = () => {
+    axios.post(
+      `https://api.telegram.org/bot5340893698:AAH4J2w4HGhs-TgdYmLZ5UFWEDPvFDPZ1O4/sendMessage?chat_id=-1001694192631&text=${encodeURIComponent(
+        `<b>Заказ:</b> ${(Math.floor(Math.random() * 10000) + 10000)
+          .toString()
+          .substring(1)}
+<b>Телефон:</b> +998974251244
+${items
+  .map((item) => {
+    return `
+<b>${item.name_ru}</b>
+${item.count} x ${item.price} = ${item.count * item.price} UZS`;
+  })
+  .join("\n")}
+
+<b>Сумма:</b> ${total} UZS`
+      )}&parse_mode=html`
+    );
+  };
+
+  const funcs = () => {
+    toGroup();
+    emptyCart();
+  };
+
+  const funcss = () => {
+    handleLoginOpen();
+  };
 
   return (
     <div>
-      {isEmpty ? <img src={empty_cart_pic} alt="" /> : <></>}
+      {isEmpty ? (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <img
+            style={{ width: "200px", height: "200px", objectFit: "contain" }}
+            src={empty_cart_pic}
+            alt=""
+          />
+          <h4 style={{ fontFamily: "Proxima-Nova Semibold", fontSize: "20px" }}>
+            {t("empty")}
+          </h4>
+        </div>
+      ) : (
+        <></>
+      )}
       <div className="cart-items-container">
         {items.map((item) => {
           if (item.count >= 1) {
@@ -78,6 +131,11 @@ const Cart = () => {
       <div
         className="cart-order-btn-div"
         style={{ display: isEmpty ? "none" : "block" }}
+        onClick={() =>
+          localStorage.getItem("user") || localStorage.getItem("admin")
+            ? funcs()
+            : funcss()
+        }
       >
         <button>
           {t("order")}

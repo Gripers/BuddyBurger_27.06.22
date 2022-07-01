@@ -1,10 +1,12 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import "../styles/categories.scss";
-import Slider from "react-slick";
 import { SliderSetContext } from "../anyFunc/sliderSet";
 import { DopFuncsContext } from "../anyFunc/dopFuncs";
 import { ApiFuncsContext } from "../anyFunc/apiFuncs";
+import OwlCarousel from "react-owl-carousel";
+import "./script";
+import { Link } from "react-scroll";
 
 const Categories = () => {
   const { t } = useTranslation();
@@ -16,7 +18,7 @@ const Categories = () => {
     <div className="categories-container">
       <h1 className="categories-head-h1">{t("categories")}</h1>
       <div id="dropdi">
-        <Slider {...catsettings} className="mt-4 categories-slider">
+        <OwlCarousel {...catsettings} className="mt-4 categories-slider">
           {categories.map((cat) => {
             return (
               <a key={cat.id} href={`#${cat.name_ru}`}>
@@ -24,7 +26,7 @@ const Categories = () => {
               </a>
             );
           })}
-        </Slider>
+        </OwlCarousel>
       </div>
       <div
         className="dropped-slider"
@@ -32,16 +34,21 @@ const Categories = () => {
           transform: drop ? "translateY(0px)" : "translateY(-200px)",
           zIndex: "9999999",
         }}
+        id="dropped-slider-id"
       >
-        <Slider {...catsettings} className="categories-slider">
+        <OwlCarousel {...catsettings} className="hidden-categories-slider">
           {categories.map((cat) => {
             return (
-              <a key={cat.id} href={`#${cat.name_ru}`}>
-                <div className="cat-slider-item">{cat.name_ru}</div>
-              </a>
+              <Link
+                activeClass="active-cat-slider-item"
+                spy
+                to={`${cat.name_ru}`}
+              >
+                {cat.name_ru}
+              </Link>
             );
           })}
-        </Slider>
+        </OwlCarousel>
       </div>
     </div>
   );

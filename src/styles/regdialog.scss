@@ -4,29 +4,36 @@
     width: 422px;
     height: auto;
     padding: 1vh;
+
     .reg-dialog {
       .reg-dialog-header {
         display: flex;
         justify-content: end;
+
         svg {
           cursor: pointer;
         }
       }
+
       .reg-dialog-body {
         text-align: center;
+
         h3 {
           font-family: "Proxima-Nova Semibold";
           font-size: 24px;
         }
+
         .reg-dialog-body-forms {
           display: grid;
           row-gap: 20px;
           width: 90%;
           margin: 0 auto;
+
           .name-inp {
             padding: 2vh;
             outline: none;
           }
+
           input {
             border: none;
             border-radius: 8px;
@@ -34,6 +41,7 @@
             background: #f7f7f7;
             min-width: 100%;
           }
+
           button {
             border: none;
             border-radius: 8px;
@@ -44,9 +52,11 @@
           }
         }
       }
+
       .reg-dialog-footer {
         text-align: center;
         font-size: 16px;
+
         p {
           span {
             cursor: pointer;

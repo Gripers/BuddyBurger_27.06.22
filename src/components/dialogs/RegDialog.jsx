@@ -4,9 +4,11 @@ import { DopFuncsContext } from "../../anyFunc/dopFuncs";
 import "../../styles/regdialog.scss";
 import PhoneInput from "react-phone-input-2";
 import { ApiReqContext } from "../../anyFunc/apiReq";
+import { CircularProgress } from "@mui/material";
 
 const RegDialog = () => {
-  const { setRegOpen, regSwitcher } = React.useContext(DopFuncsContext);
+  const { setRegOpen, regSwitcher, loading, setLoading } =
+    React.useContext(DopFuncsContext);
   const { t } = useTranslation();
   const { regname, setRegName, regphone, setRegPhone, handleRegisterRequest } =
     React.useContext(ApiReqContext);
@@ -44,8 +46,20 @@ const RegDialog = () => {
             onChange={setRegPhone}
             placeholder={`${t("dialog.registration.phone")}`}
           />
-          <button onClick={handleRegisterRequest}>
-            {t("dialog.registration.reg")}
+          <button
+            className="d-flex justify-content-center align-items-center"
+            onClick={() => {
+              setLoading(true);
+              handleRegisterRequest();
+            }}
+          >
+            {loading ? (
+              <CircularProgress
+                style={{ color: "white", width: "20px", height: "20px" }}
+              />
+            ) : (
+              t("dialog.registration.reg")
+            )}
           </button>
         </div>
       </div>

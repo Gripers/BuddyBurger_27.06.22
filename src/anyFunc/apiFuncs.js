@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { url } from "../Utilities";
 
 const ApiFuncsContext = React.createContext();
 
@@ -8,15 +9,11 @@ const ApiFuncsContextProvider = ({ children }) => {
   const [burgers, setBurgers] = React.useState([]);
 
   React.useEffect(() => {
-    axios
-      .get("https://api.buddyburger.kannas.uz/categories/")
-      .then((res) => setCategories(res.data));
+    axios.get(`${url}/categories/`).then((res) => setCategories(res.data));
   }, []);
 
   React.useEffect(() => {
-    axios
-      .get("https://api.buddyburger.kannas.uz/burgers/")
-      .then((res) => setBurgers(res.data));
+    axios.get(`${url}/burgers/`).then((res) => setBurgers(res.data));
   }, []);
 
   if (!categories) {

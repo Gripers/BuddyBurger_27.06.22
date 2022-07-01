@@ -2,6 +2,7 @@
   background: white;
   border-radius: 12px;
   padding: 3vh;
+
   .aboutus-card-head {
     img {
       width: 100%;
@@ -10,13 +11,16 @@
       border-radius: 12px;
     }
   }
+
   .aboutus-card-body {
     h3 {
       font-size: 24px;
       font-family: "Proxima-Nova Semibold";
     }
+
     p {
       font-size: 16px;
+
       a {
         text-decoration: none;
         color: #51267d;
@@ -24,12 +28,14 @@
     }
   }
 }
+
 @media all and (min-width: 1280px) {
   .aboutus-container {
     max-width: 1146px;
     margin: 0 auto;
   }
 }
+
 @media all and (max-width: 1280px) {
   .aboutus-container {
     max-width: 95%;

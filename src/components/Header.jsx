@@ -1,17 +1,17 @@
 import React from "react";
-import Slider from "react-slick";
 import { SliderSetContext } from "../anyFunc/sliderSet";
 import header_first from "../img/header-1.jfif";
 import header_second from "../img/header-2.jfif";
 import header_third from "../img/header-3.jfif";
 import "../styles/header.scss";
+import OwlCarousel from "react-owl-carousel";
 
 const Header = () => {
   const { headersettings } = React.useContext(SliderSetContext);
 
   return (
     <div>
-      <Slider {...headersettings}>
+      <OwlCarousel {...headersettings}>
         <div className="slider-item">
           <img src={header_first} alt="" />
         </div>
@@ -21,7 +21,7 @@ const Header = () => {
         <div className="slider-item">
           <img src={header_third} alt="" />
         </div>
-      </Slider>
+      </OwlCarousel>
     </div>
   );
 };

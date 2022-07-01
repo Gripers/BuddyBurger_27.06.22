@@ -4,12 +4,21 @@ import "../../styles/logindialog.scss";
 import PhoneInput from "react-phone-input-2";
 import { DopFuncsContext } from "../../anyFunc/dopFuncs";
 import { ApiReqContext } from "../../anyFunc/apiReq";
+import { CircularProgress } from "@mui/material";
 
 const LoginDialog = () => {
   const { t } = useTranslation();
-  const { loginSwitcher, setLoginOpen } = React.useContext(DopFuncsContext);
+  const { loginSwitcher, setLoginOpen, loading, setLoading } =
+    React.useContext(DopFuncsContext);
   const { phone, setPhone, handleLoginRequest } =
     React.useContext(ApiReqContext);
+
+  const enterKey = (event) => {
+    if (event.key === "Enter") {
+      setLoading(true);
+      handleLoginRequest();
+    }
+  };
 
   return (
     <div className="login-dialog">
@@ -36,8 +45,42 @@ const LoginDialog = () => {
             prefix=""
             value={phone}
             onChange={setPhone}
+            onKeyDown={phone.length >= 12 ? enterKey : null}
           />
-          <button onClick={handleLoginRequest}>{t("dialog.login.sign")}</button>
+          {phone.length >= 12 ? (
+            <button
+              className="d-flex justify-content-center align-items-center"
+              onClick={() => {
+                setLoading(true);
+                handleLoginRequest();
+              }}
+            >
+              {loading ? (
+                <CircularProgress
+                  style={{ color: "white", width: "20px", height: "20px" }}
+                />
+              ) : (
+                t("dialog.login.sign")
+              )}
+            </button>
+          ) : (
+            <button
+              disabled
+              className="d-flex justify-content-center align-items-center"
+              onClick={() => {
+                setLoading(true);
+                handleLoginRequest();
+              }}
+            >
+              {loading ? (
+                <CircularProgress
+                  style={{ color: "white", width: "20px", height: "20px" }}
+                />
+              ) : (
+                t("dialog.login.sign")
+              )}
+            </button>
+          )}
         </div>
       </div>
       <div className="login-dialog-footer">

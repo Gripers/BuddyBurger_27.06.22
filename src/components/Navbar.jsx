@@ -19,6 +19,7 @@ import RegDialog from "./dialogs/RegDialog";
 import LoginConfirmDialog from "./dialogs/LoginConfirmDialog";
 import ProfileDrop from "./ProfileDrop";
 import RegConfirmDialog from "./dialogs/RegConfirmDialog";
+import { useCart } from "react-use-cart";
 
 function Navbar() {
   const theme = useTheme();
@@ -41,11 +42,11 @@ function Navbar() {
     setLoginConfirmOpen,
     regConOpen,
     setRegConOpen,
-    show,
   } = React.useContext(DopFuncsContext);
+  const { totalItems } = useCart();
 
   return (
-    <div style={{ display: show }}>
+    <div>
       <AppBar
         position="static"
         style={{ background: "white", boxShadow: "none" }}
@@ -73,6 +74,15 @@ function Navbar() {
               </div>
             </div>
           </div>
+          <div style={{ display: isMobile ? "block" : "none" }}>
+            {localStorage.getItem("user") || localStorage.getItem("admin") ? (
+              <ProfileDrop />
+            ) : (
+              <button className="mobile-sign-btn" onClick={handleLoginOpen}>
+                {t("btns.sign")}
+              </button>
+            )}
+          </div>
           <div style={{ display: isMobile ? "none" : "block" }}>
             <div className="btns-div">
               <div className="nav-drop-down">
@@ -85,6 +95,7 @@ function Navbar() {
                   >
                     <img src={cart} alt="" />
                     <p>{t("btns.cart")}</p>
+                    <span>{totalItems}</span>
                   </button>
                   <ul
                     class="dropdown-menu"
@@ -161,4 +172,5 @@ function Navbar() {
     </div>
   );
 }
+
 export default Navbar;

@@ -4,9 +4,10 @@ import { DopFuncsContext } from "../../anyFunc/dopFuncs";
 import PhoneInput from "react-phone-input-2";
 import "../../styles/logindialogcon.scss";
 import { ApiReqContext } from "../../anyFunc/apiReq";
+import { CircularProgress } from "@mui/material";
 
 const LoginConfirmDialog = () => {
-  const { setLoginConfirmOpen, loginSwitcher } =
+  const { setLoginConfirmOpen, loginSwitcher, loading, setLoading } =
     React.useContext(DopFuncsContext);
   const {
     logconsms,
@@ -50,8 +51,20 @@ const LoginConfirmDialog = () => {
             value={logconsms}
             onChange={(e) => setLogConSms(e.target.value)}
           />
-          <button onClick={handleLoginConfirmRequest}>
-            {t("dialog.login.sign")}
+          <button
+            className="d-flex justify-content-center align-items-center"
+            onClick={() => {
+              setLoading(true);
+              handleLoginConfirmRequest();
+            }}
+          >
+            {loading ? (
+              <CircularProgress
+                style={{ color: "white", width: "20px", height: "20px" }}
+              />
+            ) : (
+              t("dialog.login.sign")
+            )}
           </button>
         </div>
       </div>

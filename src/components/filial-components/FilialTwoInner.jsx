@@ -1,10 +1,12 @@
 import React from "react";
 import "../../styles/filialinner.scss";
 import Footer from "../Footer";
+import Navbar from "../Navbar";
 
 const FilialTwoInner = () => {
   return (
     <>
+      <Navbar />
       <div className="filial-inner-container">
         <div
           className="filial-inner-card my-5"

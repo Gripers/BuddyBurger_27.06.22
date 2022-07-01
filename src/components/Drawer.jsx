@@ -23,7 +23,7 @@ function DrawerComponent() {
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
         className="drawer-opener"
-        transitionDuration={500}
+        transitionDuration={1000}
       >
         <div className="drawer-header">
           <img src={logo} alt="" className="logo" />
@@ -71,10 +71,12 @@ function DrawerComponent() {
       <IconButton
         onClick={() => setOpenDrawer(!openDrawer)}
         className="burger-icon"
+        style={{ order: "-1" }}
       >
         <MenuIcon />
       </IconButton>
     </>
   );
 }
+
 export default DrawerComponent;

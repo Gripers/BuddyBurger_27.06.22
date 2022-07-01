@@ -1,13 +1,11 @@
 import React from "react";
 import { ApiFuncsContext } from "../../../anyFunc/apiFuncs";
 import { ApiReqContext } from "../../../anyFunc/apiReq";
-import { DopFuncsContext } from "../../../anyFunc/dopFuncs";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./addproduct.scss";
 
 const AddProduct = () => {
-  const { setShow } = React.useContext(DopFuncsContext);
   const {
     nameuz,
     nameen,
@@ -30,10 +28,6 @@ const AddProduct = () => {
     setcategory,
   } = React.useContext(ApiReqContext);
   const { categories } = React.useContext(ApiFuncsContext);
-
-  React.useEffect(() => {
-    setShow("none");
-  }, []);
 
   return (
     <div className="list">
@@ -84,11 +78,10 @@ const AddProduct = () => {
             onChange={(e) => setdefinitionru(e.target.value)}
           />
           <input
-            type="text"
+            type="file"
             className="form-control shadow-none"
             placeholder="Image"
-            value={image}
-            onChange={(e) => setimage(e.target.value)}
+            onChange={(e) => setimage(e.target.files[0])}
           />
           <input
             type="text"
@@ -102,6 +95,7 @@ const AddProduct = () => {
             onChange={(e) => setcategory(e.target.value)}
             className="form-control shadow-none"
           >
+            <option value="">Select category</option>
             {categories.map((cat) => {
               return (
                 <option key={cat.id} value={cat.id}>

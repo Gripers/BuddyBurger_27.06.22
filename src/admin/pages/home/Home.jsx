@@ -1,5 +1,4 @@
 import React from "react";
-import { DopFuncsContext } from "../../../anyFunc/dopFuncs";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./home.scss";
@@ -7,12 +6,6 @@ import Featured from "../../components/featured/Featured";
 import Chart from "../../components/chart/Chart";
 
 const Home = () => {
-  const { setShow } = React.useContext(DopFuncsContext);
-
-  React.useEffect(() => {
-    setShow("none");
-  }, []);
-
   return (
     <div className="home">
       <Sidebar />

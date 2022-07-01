@@ -2,6 +2,7 @@ import NProgress from "nprogress";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 import about_pic from "../img/about.png";
 import "../styles/aboutus.scss";
 
@@ -13,6 +14,7 @@ const About = () => {
 
   return (
     <>
+      <Navbar />
       <div className="aboutus-container my-5">
         <div
           className="aboutus-card"

@@ -36,7 +36,8 @@ const ProfileDrop = () => {
           <li
             onClick={() => {
               localStorage.removeItem("user") ||
-                localStorage.removeItem("admin");
+                localStorage.removeItem("admin") ||
+                localStorage.removeItem("token");
               window.location.reload();
             }}
           >

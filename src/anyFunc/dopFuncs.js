@@ -10,7 +10,7 @@ const DopFuncsContextProvider = ({ children }) => {
   const [regOpen, setRegOpen] = React.useState(false);
   const [loginConfirmOpen, setLoginConfirmOpen] = React.useState(false);
   const [regConOpen, setRegConOpen] = React.useState(false);
-  const [show, setShow] = React.useState("block");
+  const [loading, setLoading] = React.useState(false);
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -99,8 +99,8 @@ const DopFuncsContextProvider = ({ children }) => {
           regconSwitcher,
           regConOpen,
           setRegConOpen,
-          show,
-          setShow,
+          loading,
+          setLoading,
         }}
       >
         {children}

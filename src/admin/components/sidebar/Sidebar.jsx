@@ -19,10 +19,12 @@ const Sidebar = () => {
       <div className="center">
         <ul>
           <p className="title">MAIN</p>
-          <li>
-            <DashboardIcon className="icon" />
-            <span>Dashboard</span>
-          </li>
+          <Link to="/admin" style={{ textDecoration: "none" }}>
+            <li>
+              <DashboardIcon className="icon" />
+              <span>Dashboard</span>
+            </li>
+          </Link>
           <p className="title">LISTS</p>
           <Link to="/users" style={{ textDecoration: "none" }}>
             <li>
@@ -35,17 +37,25 @@ const Sidebar = () => {
               <StoreIcon className="icon" />
               <span>Products</span>
             </li>
-            <li>
-              <CategoryIcon className="icon" />
-              <span>Categories</span>
-            </li>
+            <Link to="/categories" style={{ textDecoration: "none" }}>
+              <li>
+                <CategoryIcon className="icon" />
+                <span>Categories</span>
+              </li>
+            </Link>
           </Link>
           <p className="title">USER</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
           </li>
-          <li>
+          <li
+            onClick={() => {
+              localStorage.removeItem("admin");
+              window.location.href = "/";
+            }}
+            style={{ cursor: "pointer" }}
+          >
             <ExitToAppIcon className="icon" />
             <span>Logout</span>
           </li>
