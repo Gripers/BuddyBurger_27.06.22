@@ -24,21 +24,11 @@ function App() {
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/filialoneinner" element={<FilialOneInner />} />
         <Route path="/filialtwoinner" element={<FilialTwoInner />} />
-        {localStorage.getItem("admin") ? (
-          <Route path="/admin" element={<AdminHome />} />
-        ) : null}
-        {localStorage.getItem("admin") ? (
-          <Route path="/products" element={<List />} />
-        ) : null}
-        {localStorage.getItem("admin") ? (
-          <Route path="/products/new" element={<AddProduct />} />
-        ) : null}
-        {localStorage.getItem("admin") ? (
-          <Route path="/categories" element={<Categories />} />
-        ) : null}
-        {localStorage.getItem("admin") ? (
-          <Route path="/categories/new" element={<AddCategory />} />
-        ) : null}
+        <Route path="/admin" element={<AdminHome />} />
+        <Route path="/products" element={<List />} />
+        <Route path="/products/new" element={<AddProduct />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/categories/new" element={<AddCategory />} />
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
       <MobileShoppingCart />

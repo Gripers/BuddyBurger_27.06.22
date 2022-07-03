@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import "../styles/profile.scss";
+import { Link } from "react-router-dom";
 
 const ProfileDrop = () => {
   const { t } = useTranslation();
@@ -33,6 +34,17 @@ const ProfileDrop = () => {
           aria-labelledby="dropdownMenuButton1"
           style={{ boxShadow: "rgb(0 0 0 / 7%) 0px 4px 30px" }}
         >
+          <li>
+            {localStorage.getItem("user") ? (
+              <Link to="/" className="dropdown-item">
+                User
+              </Link>
+            ) : localStorage.getItem("admin") ? (
+              <Link to="/admin" className="dropdown-item">
+                Admin
+              </Link>
+            ) : null}
+          </li>
           <li
             onClick={() => {
               localStorage.removeItem("user") ||

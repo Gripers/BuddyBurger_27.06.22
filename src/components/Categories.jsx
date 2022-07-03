@@ -7,12 +7,16 @@ import { ApiFuncsContext } from "../anyFunc/apiFuncs";
 import OwlCarousel from "react-owl-carousel";
 import "./script";
 import { Link } from "react-scroll";
+import cart from "../img/cart.svg";
+import Cart from "./Cart";
+import { useCart } from "react-use-cart";
 
 const Categories = () => {
   const { t } = useTranslation();
   const { catsettings } = React.useContext(SliderSetContext);
   const { categories } = React.useContext(ApiFuncsContext);
   const { drop } = React.useContext(DopFuncsContext);
+  const { totalItems } = useCart();
 
   return (
     <div className="categories-container">
@@ -49,6 +53,29 @@ const Categories = () => {
             );
           })}
         </OwlCarousel>
+        <div className="dropped-slider-cart-btn-div d-flex justify-content-end">
+          <div className="nav-drop-down">
+            <div className="dropdown">
+              <button
+                className="cart-btn mt-2"
+                type="button"
+                id="dropdownMenu2"
+                aria-expanded="false"
+              >
+                <img src={cart} alt="" />
+                <p>{t("btns.cart")}</p>
+                <span>{totalItems}</span>
+              </button>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenu2"
+                style={{ boxShadow: "0 4px 25px rgb(0 0 0 / 25%)" }}
+              >
+                <Cart />
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

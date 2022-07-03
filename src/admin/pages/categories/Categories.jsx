@@ -5,7 +5,7 @@ import "./categories.scss";
 import { ApiFuncsContext } from "../../../anyFunc/apiFuncs";
 import { ApiReqContext } from "../../../anyFunc/apiReq";
 import { Box, Modal } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Categories = () => {
   const { categories } = React.useContext(ApiFuncsContext);
@@ -23,6 +23,16 @@ const Categories = () => {
     categoryClose,
     catModalData,
   } = React.useContext(ApiReqContext);
+
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (localStorage.getItem("user")) {
+      navigate("/");
+    } else if (!localStorage.getItem("admin")) {
+      navigate("/");
+    }
+  }, []);
 
   const style = {
     position: "absolute",

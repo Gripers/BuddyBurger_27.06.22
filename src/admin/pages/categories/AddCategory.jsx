@@ -3,6 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { ApiReqContext } from "../../../anyFunc/apiReq";
 import "./categories.scss";
+import { useNavigate } from "react-router-dom";
 
 const AddCategory = () => {
   const {
@@ -14,6 +15,16 @@ const AddCategory = () => {
     setcatnameru,
     addCategory,
   } = React.useContext(ApiReqContext);
+
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (localStorage.getItem("user")) {
+      navigate("/");
+    } else if (!localStorage.getItem("admin")) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <div className="categories-home">

@@ -85,6 +85,8 @@ const ApiReqContextProvider = ({ children }) => {
         if (res.data.status == 200) {
           logconSwitcher();
           setLoading(false);
+        } else if (res.data.status == 400) {
+          setLoading(false);
         }
       });
   };
@@ -103,6 +105,8 @@ const ApiReqContextProvider = ({ children }) => {
           localStorage.setItem("admin", JSON.stringify(res.data));
           localStorage.setItem("token", res.data.token);
           setLoginConfirmOpen(false);
+        } else if (res.data.status == 400) {
+          setLoading(false);
         }
       });
   };
@@ -115,6 +119,8 @@ const ApiReqContextProvider = ({ children }) => {
       .then((res) => {
         if (res.data.status == 200) {
           regconSwitcher();
+          setLoading(false);
+        } else if (res.data.status == 400) {
           setLoading(false);
         }
       });
@@ -133,6 +139,8 @@ const ApiReqContextProvider = ({ children }) => {
         } else if (res.data.is_admin == true) {
           localStorage.setItem("admin", JSON.stringify(res.data));
           localStorage.setItem("token", res.data.token);
+        } else if (res.data.status == 400) {
+          setLoading(false);
         }
       });
   };

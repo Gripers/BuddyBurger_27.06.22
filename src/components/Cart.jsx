@@ -39,6 +39,7 @@ ${item.count} x ${item.price} = ${item.count * item.price} UZS`;
   };
 
   const funcss = () => {
+    window.scrollTo(0, 0);
     handleLoginOpen();
   };
 

@@ -4,8 +4,19 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import "./home.scss";
 import Featured from "../../components/featured/Featured";
 import Chart from "../../components/chart/Chart";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (localStorage.getItem("user")) {
+      navigate("/");
+    } else if (!localStorage.getItem("admin")) {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <div className="home">
       <Sidebar />

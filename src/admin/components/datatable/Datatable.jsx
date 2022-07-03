@@ -91,7 +91,7 @@ const Datatable = () => {
                     </td>
                     <td className="align-middle">{burger.name_ru}</td>
                     <td className="align-middle">{burger.price} UZS</td>
-                    <td className="align-middle">{burger.category.name_ru}</td>
+                    <td className="align-middle">{burger.category?.name_ru}</td>
                     <td className="align-middle">
                       <button
                         className="edit-btn btn"

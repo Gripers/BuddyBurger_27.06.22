@@ -66,3 +66,22 @@
     }
   }
 }
+
+@media all and (max-width: 500px) {
+  .reg-dialog-glav .MuiPaper-root {
+    margin: 5px;
+    overflow: hidden;
+
+    .reg-dialog-body-forms {
+      width: 95% !important;
+
+      input {
+        width: 100%;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}

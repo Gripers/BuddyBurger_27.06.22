@@ -4,6 +4,7 @@ import { ApiReqContext } from "../../../anyFunc/apiReq";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./addproduct.scss";
+import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
   const {
@@ -28,6 +29,16 @@ const AddProduct = () => {
     setcategory,
   } = React.useContext(ApiReqContext);
   const { categories } = React.useContext(ApiFuncsContext);
+
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (localStorage.getItem("user")) {
+      navigate("/");
+    } else if (!localStorage.getItem("admin")) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <div className="list">
